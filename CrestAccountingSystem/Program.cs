@@ -16,7 +16,7 @@ namespace CrestAccountingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateAccount());
+            Application.Run(new MainMenu());
         }
     }
 }
