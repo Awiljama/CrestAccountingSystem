@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace CrestAccountingSystem
 {
-    public partial class AccountsReceivable : Form
+    public partial class AccountsReceivable : AccountsReceivablePayable
     {
-        public MainMenu MainMenu { get; set; }
-        public AccountsReceivable()
+        public AccountsReceivable() : base()
         {
             InitializeComponent();
         }

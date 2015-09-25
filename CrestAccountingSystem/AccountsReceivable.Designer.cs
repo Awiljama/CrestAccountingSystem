@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // AccountsReceivable
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "AccountsReceivable";
+            this.ClientSize = new System.Drawing.Size(1143, 541);
+            this.Name = "AccountsReceivable";
+            this.Text = "Crest Technologies Accounts Receivable";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

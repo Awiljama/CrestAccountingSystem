@@ -80,6 +80,12 @@
     <Compile Include="AccountsReceivable.Designer.cs">
       <DependentUpon>AccountsReceivable.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccountsReceivablePayable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountsReceivablePayable.Designer.cs">
+      <DependentUpon>AccountsReceivablePayable.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AccountsPayable.resx">
       <DependentUpon>AccountsPayable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountsReceivable.resx">
+      <DependentUpon>AccountsReceivable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountsReceivablePayable.resx">
+      <DependentUpon>AccountsReceivablePayable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
