@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Net.Mail;
+using System.Drawing;
 
 namespace CrestAccountingSystem
 {
     public partial class CreateAccount : Form
     {
-        List<TextBox> Fields;
+        private List<TextBox> Fields;
         const string EMAIL_MESSAGE = "Please enter a valid email address";
         const string EMAIL_CAPTION = "INVALID EMAIL";
         const string FIELD_VALIDATION_MESSAGE = "All fields must be completed";
@@ -15,6 +16,8 @@ namespace CrestAccountingSystem
         const string PHONE_MESSAGE = "Please enter a valid phone number";
         const string PHONE_CAPTION = "INVALID PHONE NUMBER";
 		const int MAX_PHONE_VALUE = 9999;
+        const string PHONE_NUMBER_FORMAT_PLACEHOLDER = "xxx-xxx-xxxx";
+        public MainMenu MainMenu { get; set; }
 
         public CreateAccount()
         {
@@ -24,6 +27,13 @@ namespace CrestAccountingSystem
         private void CreateAccount_Load(object sender, EventArgs e)
         {
             Fields = new List<TextBox> { EmailTextBox, PhoneNumberTextBox, AccountNameTextBox, AccountContactNameTextBox };
+            FormatPhoneNumberTextBox();
+        }
+
+        private void FormatPhoneNumberTextBox()
+        {
+            PhoneNumberTextBox.Text = PHONE_NUMBER_FORMAT_PLACEHOLDER;
+            PhoneNumberTextBox.ForeColor = Color.Gray;
         }
 
         private void CreateAccountButton_Click(object sender, EventArgs e)
@@ -39,7 +49,7 @@ namespace CrestAccountingSystem
             }
             catch (FormatException) // we catch this exception so that we can take advantage of MailAddress throwing an exception
             {
-                DisplayMessageBox(EMAIL_MESSAGE, EMAIL_CAPTION, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                DisplayMessageBox(EMAIL_MESSAGE, EMAIL_CAPTION, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
@@ -91,6 +101,34 @@ namespace CrestAccountingSystem
                 field.Text = string.Empty;
                 AccountNameTextBox.Focus();
             }
-        }    
+            FormatPhoneNumberTextBox();
+        }
+
+        private void PhoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PhoneNumberTextBox.ForeColor = Color.Black;
+        }
+
+        private void PhoneNumberTextBox_Enter(object sender, EventArgs e)
+        {
+            if (PhoneNumberTextBox.Text == PHONE_NUMBER_FORMAT_PLACEHOLDER)
+            {
+                PhoneNumberTextBox.Text = string.Empty;
+            }
+        }
+
+        private void PhoneNumberTextBox_Leave(object sender, EventArgs e)
+        {
+            if (PhoneNumberTextBox.Text == PHONE_NUMBER_FORMAT_PLACEHOLDER || PhoneNumberTextBox.Text == string.Empty)
+            {
+                FormatPhoneNumberTextBox();
+            }
+        }
+
+        private void MainMenuButton_Click(object sender, EventArgs e)
+        {
+            MainMenu.Show();
+            Hide();
+        }
     }
 }

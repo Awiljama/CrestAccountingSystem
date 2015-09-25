@@ -11,8 +11,8 @@ namespace CrestAccountingSystem
     {
         private const int ACCOUNT_NUMBER_MINIMUM = 1000000;
         private const int ACCOUNT_NUMBER_MAXIMUM = 9999999;
-        public AccountContact ContactInformation { get; }
-        public int AccountNumber { get; }
+        public AccountContact ContactInformation { get; private set; }
+        public int AccountNumber { get; private set; }
 
         public Account(AccountContact contactInformation)
         {
