@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CrestAccountingSystem
+{
+    public partial class LogIn : Form
+    {
+        public LogIn()
+        {
+            InitializeComponent();
+        }
+
+        private void LogIn_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void LogInbutton_Click(object sender, EventArgs e)
+        {
+            
+            this.usersTableAdapter.Fill(this.crestAccountingDatabaseDataSet1.Users);
+            var employees = from c in this.crestAccountingDatabaseDataSet1.Users 
+                            where UserNametextBox.Text  == c.userName &&
+                            passwordtextbox.Text   == c.password
+                            select c;
+
+            if (employees.Count() == 1)
+            {
+
+                MainMenu mainPage = new MainMenu();
+                mainPage.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+
+                MessageBox.Show("User name or password is incorrect.");
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Please Call IT department at 614-355-0001");
+        }
+    }
+    
+}
